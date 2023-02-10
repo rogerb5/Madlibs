@@ -1,0 +1,44 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: system-ui;
+    letter-spacing: 0.05rem;
+}
+
+header {
+    text-align: center;
+    padding: 1rem;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    height: 80vh;
+    justify-content: space-around;
+    align-items: center;
+    position: relative;
+    inset: 0;
+}
+
+div {
+    border: 2px solid black;
+    padding: 0.7rem 1rem 0.7rem 1rem;
+    margin: 0.7rem;
+}
+
+section.prompts-section {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+button:hover {
+    cursor: pointer;
+}
+
+button.btn {
+    border: none;
+    outline: 0;
+    padding: 0.5rem 1rem 0.5rem 1rem;
+}

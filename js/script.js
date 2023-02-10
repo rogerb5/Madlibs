@@ -9,6 +9,10 @@
 
 */
 
+const addTextBtn = document.querySelectorAll('button.btn-add');
+const generateBtn = document.querySelector('button.generate-btn');
+
+
 const storyText = `
         There existed several 
         :plural-noun: in the great Cascade Mountain Range. Each one of them had 
@@ -22,6 +26,19 @@ const adjectiveArray = [];
 const placeArray = [];
 const noiseArray = [];
 const nameArray = [];
+
+// event listeners
+addTextBtn.forEach(btn => {
+    btn.addEventListener('click', (event) => {
+        console.log('test123');
+        event.preventDefault();
+    })
+})
+
+generateBtn.addEventListener('click', (event) => {
+    console.log('you have submitted your inputs');
+    event.preventDefault();
+})
 
 function processInput() {
 

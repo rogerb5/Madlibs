@@ -11,6 +11,7 @@
 
 const addTextBtn = document.querySelectorAll('button.btn-add');
 const generateBtn = document.querySelector('button.generate-btn');
+const clearBtn = document.querySelectorAll('button.btn2');
 
 
 const storyText = `
@@ -31,6 +32,13 @@ const nameArray = [];
 addTextBtn.forEach(btn => {
     btn.addEventListener('click', (event) => {
         console.log('test123');
+        event.preventDefault();
+    })
+})
+
+clearBtn.forEach(btn => {
+    btn.addEventListener('click', (event) => {
+        console.log('clear')
         event.preventDefault();
     })
 })

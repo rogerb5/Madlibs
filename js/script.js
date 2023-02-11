@@ -27,7 +27,12 @@ const nameArray = [];
 
 // event listeners
 
-function loopAddBtns() {
+
+/*
+    This function loops through all add buttons
+    and parses the respective text input. 
+*/
+function addBtnsLoopParseInput() {
     const addTextBtn = document.querySelectorAll('button.btn-add');
     addTextBtn.forEach((btn, idx) => {
         btn.addEventListener('click', (event) => {
@@ -38,7 +43,7 @@ function loopAddBtns() {
     })
 }
 
-loopAddBtns();
+addBtnsLoopParseInput();
 
 clearBtn.forEach(btn => {
     btn.addEventListener('click', (event) => {

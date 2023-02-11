@@ -12,12 +12,12 @@ const inputTag = Array.from(document.querySelectorAll('[type="text"]'));
 
 const storyText = `
         There existed several 
-        :plural-noun: in the great Cascade Mountain Range. Each one of them had 
-        :adjective: hair. They always traveled to :place: once a year. 
+        :plural-noun: in the great Cascade Mountain Range. They always traveled to :place: once a year. 
         On the way there they always said :silly-noise: in a :adjective: voice.
-        The group leader was named :persons-name:
+        The group leader was named :persons-name:.
 `;
 
+// arrays the will be populated with user input
 const pluralNounsArray = [];
 const nounArray = [];
 const adjectiveArray = [];
@@ -25,35 +25,13 @@ const placeArray = [];
 const noiseArray = [];
 const nameArray = [];
 
-clearBtn.forEach(btn => {
-    btn.addEventListener('click', (event) => {
-        console.log('clear')
-        event.preventDefault();
-    })
-})
-
-generateBtn.addEventListener('click', (event) => {
-    console.log('you have submitted your inputs');
-    event.preventDefault();
-})
-
-function processInput() {
-
-}
-
-function randomizeStory() {
-
-}
-
-function outputStory() {
-
-}
-
 function clearInput() {
-
-}
-
-function restartPrompts() {
+    clearBtn.forEach(btn => {
+        btn.addEventListener('click', (event) => {
+            console.log('clear')
+            event.preventDefault();
+        })
+    })
 
 }
 
@@ -108,6 +86,33 @@ function equalsArray(attributeArray, input) {
     console.log('silly noise array: ', noiseArray);
     console.log('name array', nameArray);
 }
+
+function processInput() {
+    let newStory = storyText;
+    newStory = newStory.replaceAll(':plural-noun:', pluralNounsArray);
+    newStory = newStory.replaceAll(':noun:', nounArray);
+    newStory = newStory.replaceAll(':adjective:', adjectiveArray);
+    newStory = newStory.replaceAll(':place:', placeArray);
+    newStory = newStory.replaceAll(':silly-noise:', noiseArray);
+    newStory = newStory.replaceAll(':persons-name:', nameArray);
+    console.log('Here is your generated mad lib!');
+    console.log(newStory);
+}
+
+// event listener on click generate button process input
+generateBtn.addEventListener('click', (event) => {
+    console.log('you have submitted your inputs');
+    processInput();
+    event.preventDefault();
+})
+
+function verifyValidInput(input) {
+    if (input.value === '') {
+        alert('please enter a word');
+    }
+    return;
+}
+
 /*
     This function loops through all add buttons
     and parses the respective input text value. 
@@ -119,6 +124,7 @@ function addBtnsLoopParseInput() {
     addButton.forEach((btn, idx) => {
         btn.addEventListener('click', (event) => {
             const input = document.querySelectorAll('[type="text"]')[idx];
+            // verifyValidInput(input);
             equalsArray(attArr, input);
             console.log("User Input: ", input.value);
             console.log('-------------------------------------------')
@@ -128,3 +134,4 @@ function addBtnsLoopParseInput() {
 }
 
 addBtnsLoopParseInput();
+clearInput();

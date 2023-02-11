@@ -8,11 +8,8 @@
     Programmed by Roger 2/9/2023
 
 */
-
-const addTextBtn = document.querySelectorAll('button.btn-add');
 const generateBtn = document.querySelector('button.generate-btn');
 const clearBtn = document.querySelectorAll('button.btn2');
-
 
 const storyText = `
         There existed several 
@@ -29,12 +26,19 @@ const noiseArray = [];
 const nameArray = [];
 
 // event listeners
-addTextBtn.forEach(btn => {
-    btn.addEventListener('click', (event) => {
-        console.log('test123');
-        event.preventDefault();
+
+function loopAddBtns() {
+    const addTextBtn = document.querySelectorAll('button.btn-add');
+    addTextBtn.forEach((btn, idx) => {
+        btn.addEventListener('click', (event) => {
+            const inputs = document.querySelectorAll('[type="text"]')[idx].value;
+            console.log(inputs);
+            event.preventDefault();
+        })
     })
-})
+}
+
+loopAddBtns();
 
 clearBtn.forEach(btn => {
     btn.addEventListener('click', (event) => {
@@ -65,5 +69,9 @@ function clearInput() {
 }
 
 function restartPrompts() {
+
+}
+
+function parseDataAttributes() {
 
 }

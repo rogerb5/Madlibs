@@ -21,27 +21,11 @@ const storyText = `
 const placeholderArray = ['pnoun', 'noun', 'adjective', 'place', 'snoise', 'adjective', 'name'];
 
 const pluralNounsArray = [];
+const nounArray = [];
 const adjectiveArray = [];
 const placeArray = [];
 const noiseArray = [];
 const nameArray = [];
-
-/*
-    This function loops through all add buttons
-    and parses the respective input text value. 
-*/
-function addBtnsLoopParseInput() {
-    const addButton = document.querySelectorAll('button.btn-add');
-    addButton.forEach((btn, idx) => {
-        btn.addEventListener('click', (event) => {
-            const inputs = document.querySelectorAll('[type="text"]')[idx].value;
-            console.log(inputs);
-            event.preventDefault();
-        })
-    })
-}
-
-addBtnsLoopParseInput();
 
 clearBtn.forEach(btn => {
     btn.addEventListener('click', (event) => {
@@ -78,7 +62,7 @@ function restartPrompts() {
 /*  
     Takes an input array as a parameter
     and returns a new array of data-filter 
-    attributes using the helper method getAttribute(), and map()
+    attributes using the helper method getAttribute()
 */
 function generateAttributeArray(inputArr) {
     const attributeArray = [];
@@ -89,23 +73,43 @@ function generateAttributeArray(inputArr) {
 }
 
 /*
-    This function takes two arrays as parameters
-    and tests if both are equal in length and content
-    ultimately returns a boolean value.
+    this is a test
 */
-function equalsArray(arrayOne, arrayTwo) {
-    if (arrayOne.length != arrayTwo.length) {
-        return false;
-    }
+function equalsArray(arrayOne, arrayTwo, inputs) {
     for (let index = 0; index <= arrayOne.length - 1; index++) {
-        if (arrayOne[index] !== arrayTwo[index]) {
-            return false;
+        if (arrayOne[0] === arrayTwo[index]) {
+            pluralNounsArray.push(inputs);
         }
+
+        if (arrayOne[1] === arrayTwo[index]) {
+            nounArray.push(inputs);
+        }
+
     }
-    return true;
+    console.log("1st array index 0: ", arrayOne[0]);
+    console.log("2nd array index 0: ", arrayTwo[0]);
+    console.log('plural nouns array: ', pluralNounsArray);
+    console.log('noun array: ', nounArray);
+
 }
 
 // testing functions
-let test = generateAttributeArray(inputTag);
-let isArrayEqual = equalsArray(test, placeholderArray);
-console.log(isArrayEqual);
+let attArr = generateAttributeArray(inputTag);
+
+/*
+    This function loops through all add buttons
+    and parses the respective input text value. 
+*/
+function addBtnsLoopParseInput() {
+    const addButton = document.querySelectorAll('button.btn-add');
+    addButton.forEach((btn, idx) => {
+        btn.addEventListener('click', (event) => {
+            const inputs = document.querySelectorAll('[type="text"]')[idx].value;
+            equalsArray(attArr, placeholderArray, inputs);
+            console.log("User Input: ", inputs);
+            event.preventDefault();
+        })
+    })
+}
+
+addBtnsLoopParseInput();

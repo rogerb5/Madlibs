@@ -4,12 +4,11 @@
     Title: MadLibs
     About: This program takes user input and generates
     a silly short story.
-
     Programmed by Roger 2/9/2023
-
 */
 const generateBtn = document.querySelector('button.generate-btn');
 const clearBtn = document.querySelectorAll('button.btn2');
+const inputTag = Array.from(document.querySelectorAll('[type="text"]'));
 
 const storyText = `
         There existed several 
@@ -25,16 +24,18 @@ const placeArray = [];
 const noiseArray = [];
 const nameArray = [];
 
-// event listeners
-
+// const pnounString = 'pnoun';
+// const nounString = 'noun';
+// const adjString = 'adjective';
+// const placeString = 'place';
 
 /*
     This function loops through all add buttons
-    and parses the respective text input. 
+    and parses the respective input text value. 
 */
 function addBtnsLoopParseInput() {
-    const addTextBtn = document.querySelectorAll('button.btn-add');
-    addTextBtn.forEach((btn, idx) => {
+    const addButton = document.querySelectorAll('button.btn-add');
+    addButton.forEach((btn, idx) => {
         btn.addEventListener('click', (event) => {
             const inputs = document.querySelectorAll('[type="text"]')[idx].value;
             console.log(inputs);
@@ -77,6 +78,24 @@ function restartPrompts() {
 
 }
 
-function parseDataAttributes() {
+/*  
+    Psuedocode:
+    if the input data attribute equals string constant value
+    push the parsed input into the respective array.
 
+    inputAttributeArray: ['pnoun', 'noun', 'adjective', 'place', 'snoise', 'adjective', 'name'];
+    inputsArray['']
+    
+    if(attribute[index] === 'noun') {
+        nounArray.push(input.value)
+    }
+*/
+function generateAttributeArray(inputArr) {
+    const attributeArray = [];
+    for (let index = 0; index <= inputArr.length - 1; index++) {
+        attributeArray.push(inputArr[index].getAttribute('data-filter'));
+    }
+    console.log(attributeArray);
 }
+
+generateAttributeArray(inputTag)

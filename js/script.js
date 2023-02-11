@@ -18,8 +18,6 @@ const storyText = `
         The group leader was named :persons-name:
 `;
 
-const placeholderArray = ['pnoun', 'noun', 'adjective', 'place', 'snoise', 'adjective', 'name'];
-
 const pluralNounsArray = [];
 const nounArray = [];
 const adjectiveArray = [];
@@ -73,40 +71,55 @@ function generateAttributeArray(inputArr) {
 }
 
 /*
-    this is a test
+    Takes user input text value and attribute attribute 
+    strings as parameters and returns a boolean value
+    if the data-filter input text value equals the given attribute string
 */
-function equalsArray(arrayOne, arrayTwo, inputs) {
-    for (let index = 0; index <= arrayOne.length - 1; index++) {
-        if (arrayOne[0] === arrayTwo[index]) {
-            pluralNounsArray.push(inputs);
-        }
-
-        if (arrayOne[1] === arrayTwo[index]) {
-            nounArray.push(inputs);
-        }
-
-    }
-    console.log("1st array index 0: ", arrayOne[0]);
-    console.log("2nd array index 0: ", arrayTwo[0]);
-    console.log('plural nouns array: ', pluralNounsArray);
-    console.log('noun array: ', nounArray);
-
+function getAttributes(input, attributeString) {
+    let filterType = 'data-filter';
+    return input.getAttribute(filterType) === attributeString;
 }
 
-// testing functions
-let attArr = generateAttributeArray(inputTag);
-
+/*
+    Takes an attribute array, and user input string text values
+    as parameters and evaluates if both conditions equal eachother
+    if so push the user input into the respective array
+*/
+function equalsArray(attributeArray, input) {
+    for (let i = 0; i < attributeArray.length; i++) {
+        if (attributeArray[i] === 'pnoun' && getAttributes(input, 'pnoun')) {
+            pluralNounsArray.push(input.value);
+        } else if (attributeArray[i] === 'noun' && getAttributes(input, 'noun')) {
+            nounArray.push(input.value);
+        } else if (attributeArray[i] === 'adjective' && getAttributes(input, 'adjective')) {
+            adjectiveArray.push(input.value);
+        } else if (attributeArray[i] === 'place' && getAttributes(input, 'place')) {
+            placeArray.push(input.value);
+        } else if (attributeArray[i] === 'snoise' && getAttributes(input, 'snoise')) {
+            noiseArray.push(input.value);
+        } else if (attributeArray[i] === 'name' && getAttributes(input, 'name')) {
+            nameArray.push(input.value);
+        }
+    }
+    console.log('plural nouns array: ', pluralNounsArray);
+    console.log('noun array: ', nounArray);
+    console.log('adjective array: ', adjectiveArray);
+    console.log('place array: ', placeArray);
+    console.log('silly noise array: ', noiseArray);
+    console.log('name array', nameArray);
+}
 /*
     This function loops through all add buttons
     and parses the respective input text value. 
 */
 function addBtnsLoopParseInput() {
     const addButton = document.querySelectorAll('button.btn-add');
+    const attArr = generateAttributeArray(inputTag);
     addButton.forEach((btn, idx) => {
         btn.addEventListener('click', (event) => {
-            const inputs = document.querySelectorAll('[type="text"]')[idx].value;
-            equalsArray(attArr, placeholderArray, inputs);
-            console.log("User Input: ", inputs);
+            const input = document.querySelectorAll('[type="text"]')[idx];
+            equalsArray(attArr, input);
+            console.log("User Input: ", input.value);
             event.preventDefault();
         })
     })

@@ -1,11 +1,11 @@
 "use strict";
-
 /*
     Title: MadLibs
     About: This program takes user input and generates
     a silly short story.
     Programmed by Roger 2/9/2023
 */
+
 const generateBtn = document.querySelector('button.generate-btn');
 const clearBtn = document.querySelectorAll('button.btn2');
 const inputTag = Array.from(document.querySelectorAll('[type="text"]'));
@@ -18,16 +18,13 @@ const storyText = `
         The group leader was named :persons-name:
 `;
 
+const placeholderArray = ['pnoun', 'noun', 'adjective', 'place', 'snoise', 'adjective', 'name'];
+
 const pluralNounsArray = [];
 const adjectiveArray = [];
 const placeArray = [];
 const noiseArray = [];
 const nameArray = [];
-
-// const pnounString = 'pnoun';
-// const nounString = 'noun';
-// const adjString = 'adjective';
-// const placeString = 'place';
 
 /*
     This function loops through all add buttons
@@ -79,23 +76,36 @@ function restartPrompts() {
 }
 
 /*  
-    Psuedocode:
-    if the input data attribute equals string constant value
-    push the parsed input into the respective array.
-
-    inputAttributeArray: ['pnoun', 'noun', 'adjective', 'place', 'snoise', 'adjective', 'name'];
-    inputsArray['']
-    
-    if(attribute[index] === 'noun') {
-        nounArray.push(input.value)
-    }
+    Takes an input array as a parameter
+    and returns a new array of data-filter 
+    attributes using the helper method getAttribute(), and map()
 */
 function generateAttributeArray(inputArr) {
     const attributeArray = [];
     for (let index = 0; index <= inputArr.length - 1; index++) {
         attributeArray.push(inputArr[index].getAttribute('data-filter'));
     }
-    console.log(attributeArray);
+    return attributeArray;
 }
 
-generateAttributeArray(inputTag)
+/*
+    This function takes two arrays as parameters
+    and tests if both are equal in length and content
+    ultimately returns a boolean value.
+*/
+function equalsArray(arrayOne, arrayTwo) {
+    if (arrayOne.length != arrayTwo.length) {
+        return false;
+    }
+    for (let index = 0; index <= arrayOne.length - 1; index++) {
+        if (arrayOne[index] !== arrayTwo[index]) {
+            return false;
+        }
+    }
+    return true;
+}
+
+// testing functions
+let test = generateAttributeArray(inputTag);
+let isArrayEqual = equalsArray(test, placeholderArray);
+console.log(isArrayEqual);

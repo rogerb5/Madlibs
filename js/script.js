@@ -71,11 +71,11 @@ function generateAttributeArray(inputArr) {
 }
 
 /*
-    Takes user input text value and attribute attribute 
-    strings as parameters and returns a boolean value
-    if the data-filter input text value equals the given attribute string
+    Takes html input data-filter value, and attribute 
+    string as parameters. Returns a boolean
+    value comparing if they are equal.
 */
-function getAttributes(input, attributeString) {
+function doesFilterEqualString(input, attributeString) {
     let filterType = 'data-filter';
     return input.getAttribute(filterType) === attributeString;
 }
@@ -87,17 +87,17 @@ function getAttributes(input, attributeString) {
 */
 function equalsArray(attributeArray, input) {
     for (let i = 0; i < attributeArray.length; i++) {
-        if (attributeArray[i] === 'pnoun' && getAttributes(input, 'pnoun')) {
+        if (attributeArray[i] === 'pnoun' && doesFilterEqualString(input, 'pnoun')) {
             pluralNounsArray.push(input.value);
-        } else if (attributeArray[i] === 'noun' && getAttributes(input, 'noun')) {
+        } else if (attributeArray[i] === 'noun' && doesFilterEqualString(input, 'noun')) {
             nounArray.push(input.value);
-        } else if (attributeArray[i] === 'adjective' && getAttributes(input, 'adjective')) {
+        } else if (attributeArray[i] === 'adjective' && doesFilterEqualString(input, 'adjective')) {
             adjectiveArray.push(input.value);
-        } else if (attributeArray[i] === 'place' && getAttributes(input, 'place')) {
+        } else if (attributeArray[i] === 'place' && doesFilterEqualString(input, 'place')) {
             placeArray.push(input.value);
-        } else if (attributeArray[i] === 'snoise' && getAttributes(input, 'snoise')) {
+        } else if (attributeArray[i] === 'snoise' && doesFilterEqualString(input, 'snoise')) {
             noiseArray.push(input.value);
-        } else if (attributeArray[i] === 'name' && getAttributes(input, 'name')) {
+        } else if (attributeArray[i] === 'name' && doesFilterEqualString(input, 'name')) {
             nameArray.push(input.value);
         }
     }
@@ -115,11 +115,13 @@ function equalsArray(attributeArray, input) {
 function addBtnsLoopParseInput() {
     const addButton = document.querySelectorAll('button.btn-add');
     const attArr = generateAttributeArray(inputTag);
+
     addButton.forEach((btn, idx) => {
         btn.addEventListener('click', (event) => {
             const input = document.querySelectorAll('[type="text"]')[idx];
             equalsArray(attArr, input);
             console.log("User Input: ", input.value);
+            console.log('-------------------------------------------')
             event.preventDefault();
         })
     })

@@ -19,6 +19,7 @@ const storyText = `
 
 // arrays the will be populated with user input
 const pluralNounsArray = [];
+
 const nounArray = [];
 const adjectiveArray = [];
 const placeArray = [];
@@ -67,16 +68,22 @@ function equalsArray(attributeArray, input) {
     for (let i = 0; i < attributeArray.length; i++) {
         if (attributeArray[i] === 'pnoun' && doesFilterEqualString(input, 'pnoun')) {
             pluralNounsArray.push(input.value);
+            pluralNounsArray.length = 1;
         } else if (attributeArray[i] === 'noun' && doesFilterEqualString(input, 'noun')) {
             nounArray.push(input.value);
+            nounArray.length = 1;
         } else if (attributeArray[i] === 'adjective' && doesFilterEqualString(input, 'adjective')) {
             adjectiveArray.push(input.value);
+            adjectiveArray.length = 1;
         } else if (attributeArray[i] === 'place' && doesFilterEqualString(input, 'place')) {
             placeArray.push(input.value);
+            placeArray.length = 1;
         } else if (attributeArray[i] === 'snoise' && doesFilterEqualString(input, 'snoise')) {
             noiseArray.push(input.value);
+            noiseArray.length = 1;
         } else if (attributeArray[i] === 'name' && doesFilterEqualString(input, 'name')) {
             nameArray.push(input.value);
+            nameArray.length = 1;
         }
     }
     console.log('plural nouns array: ', pluralNounsArray);

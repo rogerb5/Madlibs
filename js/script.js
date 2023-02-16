@@ -9,6 +9,7 @@
 const generateBtn = document.querySelector('button.generate-btn');
 const clearBtn = document.querySelectorAll('button.btn2');
 const inputTag = Array.from(document.querySelectorAll('[type="text"]'));
+const divTag = document.querySelectorAll('section div');
 
 const storyText = `
         There existed several 
@@ -33,8 +34,8 @@ function clearInput() {
             event.preventDefault();
         })
     })
-
 }
+
 
 /*  
     Takes an input array as a parameter
@@ -120,25 +121,30 @@ function verifyValidInput(input) {
     return;
 }
 
+// function deleteDiv(element) {
+//     element.classList.add('remove');
+// }
+
 /*
     This function loops through all add buttons
     and parses the respective input text value. 
 */
-function addBtnsLoopParseInput() {
+function addBtnsLoopParseInput(div) {
     const addButton = document.querySelectorAll('button.btn-add');
     const attArr = generateAttributeArray(inputTag);
 
     addButton.forEach((btn, idx) => {
         btn.addEventListener('click', (event) => {
             const input = document.querySelectorAll('[type="text"]')[idx];
-            // verifyValidInput(input);
             equalsArray(attArr, input);
             console.log("User Input: ", input.value);
             console.log('-------------------------------------------')
+            // deleteDiv(div);
             event.preventDefault();
         })
     })
 }
 
-addBtnsLoopParseInput();
+
+addBtnsLoopParseInput(divTag);
 clearInput();

@@ -36,7 +36,6 @@ function clearInput() {
     })
 }
 
-
 /*  
     Takes an input array as a parameter
     and returns a new array of data-filter 

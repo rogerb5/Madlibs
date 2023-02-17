@@ -14,8 +14,8 @@
     <header>
         <h1>Mad libs</h1>
     </header>
-    <form>
 
+    <form class="question-form">
         <section class="prompts-section">
             <div>
                 <label for="plural-noun">Plural Noun</label>
@@ -27,43 +27,42 @@
             <div>
                 <label for="noun">Noun</label>
                 <input data-filter="noun" id="noun" type="text" placeholder="Noun">
-                <button class="btn btn-add">+</button>
-                <button class="btn btn2">Clear</button>
+                <button type="button" class="btn btn-add">+</button>
+                <button type="button" class="btn btn2">Clear</button>
             </div>
 
             <div>
                 <label for="adjective">Adjective</label>
                 <input data-filter="adjective" id="adjective" type="text" placeholder="Adjective">
-                <button class="btn btn-add">+</button>
-                <button class="btn btn2">Clear</button>
+                <button type="button" class="btn btn-add" role="button">+</button>
+                <button type="button" class="btn btn2">Clear</button>
             </div>
 
             <div>
                 <label for="place">Place</label>
                 <input data-filter="place" id="place" type="text" placeholder="Place">
-                <button class="btn btn-add">+</button>
-                <button class="btn btn2">Clear</button>
+                <button type="button" class="btn btn-add">+</button>
+                <button type="button" class="btn btn2">Clear</button>
             </div>
 
             <div>
                 <label for="noise">Noise</label>
                 <input data-filter="snoise" id="noise" type="text" placeholder="Silly Noise">
-                <button class="btn btn-add">+</button>
-                <button class="btn btn2">Clear</button>
+                <button type="button" class="btn btn-add">+</button>
+                <button type="button" class="btn btn2">Clear</button>
             </div>
 
             <div>
                 <label for="name">Name</label>
                 <input data-filter="name" id="name" type="text" placeholder="Person's Name">
-                <button class="btn btn-add">+</button>
-                <button class="btn btn2">Clear</button>
+                <button type="button" class="btn btn-add">+</button>
+                <button type="button" class="btn btn2">Clear</button>
             </div>
 
             <div>
-                <button class="btn generate-btn">Generate mad lib</button>
+                <button type="button" class="btn generate-btn">Generate mad lib</button>
             </div>
         </section>
-
     </form>
     <script src="js/script.js" defer></script>
 </body>

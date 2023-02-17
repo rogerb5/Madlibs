@@ -1,3 +1,4 @@
+/* General Styling ***/
 * {
     margin: 0;
     padding: 0;
@@ -6,11 +7,13 @@
     letter-spacing: 0.05rem;
 }
 
+/* Header Styling *******/
 header {
     text-align: center;
     padding: 1rem;
 }
 
+/* Form Styling ****/
 form {
     display: flex;
     flex-direction: column;
@@ -21,7 +24,7 @@ form {
     inset: 0;
 }
 
-div {
+form div {
     border: 1px solid gainsboro;
     border-radius: 5px;
     padding: 0.7rem 2rem 0.7rem 2rem;
@@ -34,7 +37,7 @@ div {
     opacity: 1;
 }
 
-div.remove {
+form div.remove {
     opacity: 0;
 }
 
@@ -42,6 +45,7 @@ div>label {
     margin: 0.4rem;
 }
 
+/*** Text input styling ***/
 input[type="text"] {
     background-color: gainsboro;
     border: none;
@@ -59,6 +63,7 @@ section.prompts-section {
     flex-direction: column;
 }
 
+/* Button Styling ***/
 button:hover {
     cursor: pointer;
 }

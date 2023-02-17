@@ -18,23 +18,13 @@ const storyText = `
         The group leader was named :persons-name:.
 `;
 
-// arrays the will be populated with user input
+// arrays that will be populated with user input
 const pluralNounsArray = [];
-
 const nounArray = [];
 const adjectiveArray = [];
 const placeArray = [];
 const noiseArray = [];
 const nameArray = [];
-
-function clearInput() {
-    clearBtn.forEach(btn => {
-        btn.addEventListener('click', (event) => {
-            console.log('clear')
-            event.preventDefault();
-        })
-    })
-}
 
 /*  
     Takes an input array as a parameter
@@ -86,14 +76,13 @@ function equalsArray(attributeArray, input) {
             nameArray.length = 1;
         }
     }
-    console.log('plural nouns array: ', pluralNounsArray);
-    console.log('noun array: ', nounArray);
-    console.log('adjective array: ', adjectiveArray);
-    console.log('place array: ', placeArray);
-    console.log('silly noise array: ', noiseArray);
-    console.log('name array', nameArray);
 }
 
+/*
+    This function will process the user input
+    by replacing tokens inside the string with the
+    replaceAll() helper method.
+*/
 function processInput() {
     let newStory = storyText;
     newStory = newStory.replaceAll(':plural-noun:', pluralNounsArray);
@@ -139,6 +128,20 @@ function addBtnsLoopParseInput(div) {
             console.log("User Input: ", input.value);
             console.log('-------------------------------------------')
             // deleteDiv(div);
+            event.preventDefault();
+        })
+    })
+}
+
+/*
+    To Do:
+    This function will clear
+    the input when the clear button is clicked
+*/
+function clearInput() {
+    clearBtn.forEach(btn => {
+        btn.addEventListener('click', (event) => {
+            console.log('clear')
             event.preventDefault();
         })
     })
